@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FoodOrderApp.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <VerticalStackLayout Padding="20">
+        <Label Text="Welcome to FoodOrderApp"
+               FontSize="24"
+               HorizontalOptions="Center"
+               Margin="0,0,0,20" />
+
+        <Button Text="1. Go to Table Selection"
+                Clicked="OnTableSelectionClicked" />
+
+        <Button Text="2. Go to Client Number (Test)"
+                Clicked="OnClientNumberClicked" />
+
+        <Button Text="3. Go to Product Selection (Test)"
+                Clicked="OnProductSelectionClicked" />
+    </VerticalStackLayout>
+
+</ContentPage>
+
+

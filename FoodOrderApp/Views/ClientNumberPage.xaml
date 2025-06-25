@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:FoodOrderApp.ViewModels"
+             x:Class="FoodOrderApp.Views.ClientNumberPage"
+             Title="Number of Clients"
+             x:DataType="viewmodels:ClientNumberViewModel">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Label Text="How many people are at the table?" FontSize="24" HorizontalOptions="Center" />
+
+        <Stepper x:Name="clientStepper"
+                 Minimum="1"
+                 Maximum="20"
+                 Increment="1"
+                 Value="{Binding ClientCount, Mode=TwoWay}" />
+
+        <Label Text="{Binding ClientCount}" FontSize="20" HorizontalOptions="Center" />
+
+        <Button Text="Continue"
+                Command="{Binding ContinueCommand}" />
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FoodOrderApp.Views.ProductSelectionPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:FoodOrderApp.Models"
+    xmlns:viewmodels="clr-namespace:FoodOrderApp.ViewModels"
+    Title="Order Products"
+    x:DataType="viewmodels:ProductSelectionViewModel">
+
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <Label
+            FontSize="24"
+            HorizontalOptions="Center"
+            Text="Select Products" />
+
+        <CollectionView ItemsSource="{Binding Products}" SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Product">
+                    <Border
+                        Margin="5"
+                        Padding="10"
+                        Stroke="Gray"
+                        StrokeShape="RoundRectangle 10">
+                        <VerticalStackLayout>
+                            <Label FontSize="18" Text="{Binding Name}" />
+                            <Label FontSize="14" Text="{Binding Price, StringFormat='Price: {0:C}'}" />
+                            <Button
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ProductSelectionViewModel}}, Path=AddToOrderCommand}"
+                                CommandParameter="{Binding .}"
+                                Text="Add to Order" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Label
+            Margin="0,10,0,0"
+            FontAttributes="Bold"
+            FontSize="20"
+            Text="Current Order:" />
+        <CollectionView
+            HeightRequest="150"
+            ItemsSource="{Binding OrderItems}"
+            SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:OrderItem">
+                    <HorizontalStackLayout>
+                        <Label Text="{Binding Product.Name}" />
+                        <Label Margin="10,0,0,0" Text="{Binding Quantity}" />
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Label
+            FontSize="18"
+            HorizontalOptions="Center"
+            Text="{Binding TotalAmount, StringFormat='Total: {0:C}'}" />
+
+        <Button
+            Margin="0,10,0,0"
+            BackgroundColor="Red"
+            Clicked="OnClearOrderClicked"
+            Text="Clear Order"
+            TextColor="White" />
+
+        <Button Command="{Binding SubmitOrderCommand}" Text="Submit Order" />
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FoodOrderApp.Views.TableSelectionPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:FoodOrderApp.Models"
+    xmlns:viewmodels="clr-namespace:FoodOrderApp.ViewModels"
+    Title="Select Table"
+    x:DataType="viewmodels:TableSelectionViewModel">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Label
+                FontSize="24"
+                HorizontalOptions="Center"
+                Text="Select a Table" />
+
+            <CollectionView ItemsSource="{Binding Tables}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Table">
+                        <Border
+                            Margin="5"
+                            Padding="10"
+                            BackgroundColor="LightGray">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10" />
+                            </Border.StrokeShape>
+                            <StackLayout>
+                                <Label
+                                    FontSize="18"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding Name}" />
+                                <Button
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:TableSelectionViewModel}}, Path=SelectTableCommand}"
+                                    CommandParameter="{Binding .}"
+                                    Text="Select" />
+                            </StackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+
+
