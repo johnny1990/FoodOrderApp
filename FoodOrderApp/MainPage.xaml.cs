@@ -25,6 +25,12 @@ namespace FoodOrderApp
         {
             await Shell.Current.GoToAsync(nameof(ProductSelectionPage));
         }
+
+        private async void OnViewOrdersClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Views.AllOrdersPage());
+        }
+
     }
 
 }

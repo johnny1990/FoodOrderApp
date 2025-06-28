@@ -13,11 +13,14 @@
         <Button Text="1. Go to Table Selection"
                 Clicked="OnTableSelectionClicked" />
 
-        <Button Text="2. Go to Client Number (Test)"
+        <Button Text="2. Go to Client Number"
                 Clicked="OnClientNumberClicked" />
 
-        <Button Text="3. Go to Product Selection (Test)"
+        <Button Text="3. Go to Product Selection"
                 Clicked="OnProductSelectionClicked" />
+
+        <Button Text="📋 View All Orders" Clicked="OnViewOrdersClicked" />
+
     </VerticalStackLayout>
 
 </ContentPage>
