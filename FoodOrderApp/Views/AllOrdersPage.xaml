@@ -20,22 +20,31 @@
             <CollectionView ItemsSource="{Binding Orders}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Border
+                        <StackLayout
                             Margin="5"
                             Padding="10"
-                            Stroke="LightGray"
-                            StrokeThickness="1">
-                            <VerticalStackLayout>
-                                <Label FontAttributes="Bold" Text="{Binding Id}" />
-                                <Label Text="{Binding TableNumber, StringFormat='Table: {0}'}" />
-                                <Label Text="{Binding ClientNumber, StringFormat='Customers: {0}'}" />
-                                <Label Text="{Binding Total, StringFormat='Total: {0:C}'}" />
-                                <Label FontSize="12" Text="{Binding CreatedAt, StringFormat='Created: {0:dd MMM yyyy HH:mm}'}" />
-                            </VerticalStackLayout>
-                        </Border>
+                            BackgroundColor="LightGray">
+                            <Label FontAttributes="Bold" Text="{Binding TableId, StringFormat='Table: {0}'}" />
+                            <Label Text="{Binding ClientCount, StringFormat='Customers: {0}'}" />
+                            <Label Text="{Binding Date, StringFormat='Created: {0:HH:mm dd-MM-yyyy}'}" />
+
+                            <!--  Detail items  -->
+                            <CollectionView Margin="10,5,0,0" ItemsSource="{Binding Items}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Product.Name}" />
+                                            <Label Margin="10,0,0,0" Text="{Binding Quantity, StringFormat='x{0}'}" />
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
