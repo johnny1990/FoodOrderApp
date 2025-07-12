@@ -108,6 +108,6 @@ public partial class ProductSelectionViewModel : ObservableObject
         await _dbContext.SaveChangesAsync();
 
         await Shell.Current.DisplayAlert("Success", "Order submitted!", "OK");
-        await Shell.Current.GoToAsync(".."); // navigate back
+        await Shell.Current.GoToAsync($"///{nameof(MainPage)}");
     }
 }
