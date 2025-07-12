@@ -5,21 +5,19 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <VerticalStackLayout Padding="20">
-        <Label Text="Welcome to FoodOrderApp"
-               FontSize="24"
-               HorizontalOptions="Center"
-               Margin="0,0,0,20" />
+        <Label
+            Margin="0,0,0,20"
+            FontSize="24"
+            HorizontalOptions="Center"
+            Text="Welcome to FoodOrderApp" />
+        <Button Clicked="OnViewOrdersClicked" Text="📋 View All Orders" />
 
-        <Button Text="1. Go to Table Selection"
-                Clicked="OnTableSelectionClicked" />
+        <Button Clicked="OnTableSelectionClicked" Text="1. Go to Table Selection" />
 
-        <Button Text="2. Go to Client Number"
-                Clicked="OnClientNumberClicked" />
+        <Button Clicked="OnClientNumberClicked" Text="2. Go to Client Number" />
 
-        <Button Text="3. Go to Product Selection"
-                Clicked="OnProductSelectionClicked" />
+        <Button Clicked="OnProductSelectionClicked" Text="3. Go to Product Selection" />
 
-        <Button Text="📋 View All Orders" Clicked="OnViewOrdersClicked" />
 
     </VerticalStackLayout>
 
